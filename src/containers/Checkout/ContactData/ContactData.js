@@ -103,9 +103,7 @@ class ContactData extends Component {
                     value={formElement.config.value}
                 />
             ))}
-            <Input inputtype="input" type="email" name="email" placeholder="Your Mail"/>
-            <Input inputtype="input" type="text" name="street" placeholder="Street"/>
-            <Input inputtype="input" type="text" name="postal" placeholder="Posta Code"/>
+            
             <Button btnType="Success" clicked={this.orderHandler}>Order</Button>
         </form>
         );
