@@ -18,7 +18,8 @@ class ContactData extends Component {
                 value: '',
                 validation: {
                     required:true
-                },valid:false
+                },
+                valid:false
                 },  
                 street:{
                     elementType: 'input',
@@ -29,7 +30,8 @@ class ContactData extends Component {
                     value: '',
                     validation: {
                         required:true
-                    },valid:false
+                    },
+                    valid:false
                 },   
                 zipCode:{
                     elementType: 'input',
@@ -42,7 +44,8 @@ class ContactData extends Component {
                         required:true,
                         minLength: 5,
                         maxLength: 5
-                    },valid:false
+                    },
+                    valid:false
                 },
                 country:{
                     elementType: 'input',
@@ -53,7 +56,8 @@ class ContactData extends Component {
                     value: '',
                     validation: {
                         required:true
-                    },valid:false
+                    },
+                    valid:false
                 },
                 email:{
                     elementType: 'input',
@@ -64,17 +68,19 @@ class ContactData extends Component {
                     value: '',
                     validation: {
                         required:true
-                    },valid:false
+                    },
+                    valid:false
                 },
                 deliveryMethod:{
                     elementType: 'select',
                     elementConfig: {
                         options: [
                             {value: 'fastest', displayValue: 'Fastest'},
-                            {value: 'cheapest', displayValue: 'Cheapest'},                    
+                            {value: 'cheapest', displayValue: 'Cheapest'}                    
                     ]
                     },
-                    value: ''
+                value: '',
+                valid:true
                 },                             
                  
         },
@@ -119,9 +125,7 @@ class ContactData extends Component {
 
         if (rules.maxLength){
             isValid = value.length <= rules.maxLength && isValid
-        }
-    
-    
+        }    
         return isValid;
     }
 
@@ -155,6 +159,8 @@ class ContactData extends Component {
                     elementType={formElement.config.elementType}
                     elementConfig={formElement.config.elementConfig}
                     value={formElement.config.value}
+                    invalid={!formElement.config.valid}
+                    shouldValidate={formElement.config.validation}
                     changed={(event)=> this.inputChangedHandler(event, formElement.id)}
                 />
             ))}
