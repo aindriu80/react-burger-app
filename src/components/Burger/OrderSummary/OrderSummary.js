@@ -3,11 +3,7 @@ import React, { Component } from 'react';
 import Auxillary from '../../../hoc/Auxillary/Auxillary';
 import Button from '../../UI/Button/Button';
 
-class OrderSummary extends Component { 
-    // This could be a functional component, it doesn't have to be a class.
-    componentWillUpdate() {
-        console.log('[OrderSummary] willUpdate');
-    }   
+class OrderSummary extends Component {     
     render () {
         const ingredientSummary = Object.keys(this.props.ingredients)
         .map(igKey => {
