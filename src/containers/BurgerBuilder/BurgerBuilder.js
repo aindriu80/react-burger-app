@@ -5,11 +5,13 @@ import Aux from '../../hoc/Auxillary/Auxillary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
-import OrderSummary from './../../components/Burger/OrderSummary/OrderSummary';
+// import OrderSummary from './../../components/Burger/OrderSummary/OrderSummary';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import withErrorHandler from './../../hoc/withErrorHandler/withErrorHandler';
-import axios from '../../axios-orders';
+// import withErrorHandler from './../../hoc/withErrorHandler/withErrorHandler';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
+import axios from '../../axios-orders';
 
 const burgerBuilder = props => {
   // constructor(props){
@@ -33,7 +35,7 @@ const burgerBuilder = props => {
   };
 
   const purchaseHandler = () => {
-    if (props.isAuthenticaed) {
+    if (props.isAuthenticated) {
       setPurchasing(true);
     } else {
       props.onSetAuthRedirectPath('/checkout');
@@ -67,9 +69,9 @@ const burgerBuilder = props => {
           ingredientAdded={props.onIngredientAdded}
           ingredientRemoved={props.onIngredientRemoved}
           disabled={disabledInfo}
-          purchaseable={updatePurchaseState(props.ings)}
+          purchasable={updatePurchaseState(props.ings)}
           ordered={purchaseHandler}
-          isAuth={props.isAuthenticaed}
+          isAuth={props.isAuthenticated}
           price={props.price}
         />
       </Aux>
@@ -100,7 +102,7 @@ const mapStateToProps = state => {
     ings: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
     error: state.burgerBuilder.error,
-    isAuthenticaed: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null
   };
 };
 const mapDispatchToProps = dispatch => {
